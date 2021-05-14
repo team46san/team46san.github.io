@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="utf-8">
+<title>Chat App</title>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
+<script src="https://unpkg.com/botui/build/botui.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- required for basic layout -->
+<link rel="stylesheet" href="https://unpkg.com/botui/build/botui.min.css">
+<!-- default theme - you can create your own theme -->
+<link rel="stylesheet" href="https://unpkg.com/botui/build/botui-theme-default.css">
+<!-- font awsome -->
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+
+<div id='header-fixed' class="my-4">
+<p class="display-4 text-info text-center">＜ＴＥＳＴ＞ボットくん</p>
+</div>
+
+<!-- チャット表示  -->
+<div class="botui-app-container border border-info" id="chat-app">
+<bot-ui style="white-space:pre-wrap;"></bot-ui>
+</div>
+
+<script>
+  //グローバル変数
+  //botui
+  var botui = new BotUI('chat-app');
+
+  //挨拶1
+  botui.message.bot({
+    loading: true,  
+    delay: 2000,  
+    content: "(仮)こんにちは！\nこれから約10問質問します(平均約5分)。"
+  //挨拶2
+  }).then(function () {
+    botui.message.bot({
+      loading: true,
+      delay: 2500,
+      content: 'はじめに社員番号を入力してください。'
+    })
+  //挨拶3
+  }).then(function () {
+    //社員ID入力(入力待ち)
+    return botui.action.text({
+      delay: 2500,
+      action: {placeholder: '例：X1234567'}
+    })
+  //挨拶4
+  }).then(function (res) {  
+    empid=res.value;
+    botui.message.bot({
+      delay: 2500,  //表示タイミング
+      content: "ありがとうございます。" + res.value + "さんですね。\n" + "それでは質問をはじめます。\n「質問開始！」を押して各質問にお答えください。",
+    });
+  //挨拶5
+  }).then(function() {
+    return botui.action.button({
+      loading: true, 
+      delay: 2500,
+      action: [{
+        text: '質問開始！',
+        value: true
+      }]
+    })
+  //初期処理をcall
+  });
+
+</script>
+</div>
+  <!-- <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
