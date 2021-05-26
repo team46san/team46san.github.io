@@ -1,4 +1,4 @@
-var qdata = [
+var talk = [
   {
     "ID": 1,
     "TYPE": "共通",
