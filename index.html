@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="https://unpkg.com/botui/build/botui-theme-default.css">
 <!-- font awsome -->
 <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<script src="js/talk.js"></script>
 </head>
 
 <body>
@@ -25,6 +26,7 @@
 <p class="display-4 text-info text-center">＜ＴＥＳＴ＞ボットくん</p>
 </div>
 
+
 <!-- チャット表示  -->
 <div class="botui-app-container border border-info" id="chat-app">
 <bot-ui style="white-space:pre-wrap;"></bot-ui>
@@ -32,6 +34,12 @@
 
 <!-- JavaScript -->
 <script>
+
+
+
+
+
+
   //グローバル変数
   //botui
   var botui = new BotUI('chat-app');
@@ -40,7 +48,7 @@
   botui.message.bot({
     loading: true,  
     delay: 2000,  
-    content: "(仮)こんにちは！\nこれから約10問質問します(平均約5分)。"
+    content: qdata[0].QUESTION
   //挨拶2
   }).then(function () {
     botui.message.bot({
