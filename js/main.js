@@ -13,7 +13,7 @@ firebase.initializeApp(firebaseConfig);
 
 Array[0]=0
 Array[1]=1
-Array[2]=0
+Array[2]=2
 
 const db=firebase.firestore();
 const collection = db.collection('messagees');
