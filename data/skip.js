@@ -1,4 +1,4 @@
-let skip = [
+const skip = [
   {
     "1": 0,
     "2": 0,

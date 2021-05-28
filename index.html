@@ -16,7 +16,11 @@
 <link rel="stylesheet" href="https://unpkg.com/botui/build/botui-theme-default.css">
 <!-- font awsome -->
 <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-<script src="js/talk.js"></script>
+
+<script src="data/talk.js"></script><!-- 質問 -->
+<script src="data/skip.js"></script><!-- スキップ -->
+<script src="data/greet1.js"></script><!-- 挨拶1 -->
+<script src="data/greet2.js"></script><!-- 挨拶2 -->
 </head>
 
 <body>
@@ -34,54 +38,48 @@
 
 <!-- JavaScript -->
 <script>
+//グローバル変数
+//botui
+var botui = new BotUI('chat-app');
 
-
-
-
-
-
-  //グローバル変数
-  //botui
-  var botui = new BotUI('chat-app');
-
-  //挨拶1
+//挨拶1
+botui.message.bot({
+  loading: true,  
+  delay: 2000,  
+  content: talk[0].QUESTION & skip[0].QUESTION 
+//挨拶2
+}).then(function () {
   botui.message.bot({
-    loading: true,  
-    delay: 2000,  
-    content: talk[0].QUESTION
-  //挨拶2
-  }).then(function () {
-    botui.message.bot({
-      loading: true,
-      delay: 2500,
-      content: 'はじめに社員番号を入力してください。'
-    })
-  //挨拶3
-  }).then(function () {
-    //社員ID入力(入力待ち)
-    return botui.action.text({
-      delay: 2500,
-      action: {placeholder: '例：X1234567'}
-    })
-  //挨拶4
-  }).then(function (res) {  
-    empid=res.value;
-    botui.message.bot({
-      delay: 2500,  //表示タイミング
-      content: "ありがとうございます。" + res.value + "さんですね。\n" + "それでは質問をはじめます。\n「質問開始！」を押して各質問にお答えください。",
-    });
-  //挨拶5
-  }).then(function() {
-    return botui.action.button({
-      loading: true, 
-      delay: 2500,
-      action: [{
-        text: '質問開始！',
-        value: true
-      }]
-    })
-  //初期処理をcall
+    loading: true,
+    delay: 2500,
+    content: greet1[0].QUESTION & greet2[2].QUESTION
+  })
+//挨拶3
+}).then(function () {
+  //社員ID入力(入力待ち)
+  return botui.action.text({
+    delay: 2500,
+    action: {placeholder: '例：X1234567'}
+  })
+//挨拶4
+}).then(function (res) {  
+  empid=res.value;
+  botui.message.bot({
+    delay: 2500,  //表示タイミング
+    content: "ありがとうございます。" + res.value + "さんですね。\n" + "それでは質問をはじめます。\n「質問開始！」を押して各質問にお答えください。",
   });
+//挨拶5
+}).then(function() {
+  return botui.action.button({
+    loading: true, 
+    delay: 2500,
+    action: [{
+      text: '質問開始！',
+      value: true
+    }]
+  })
+//初期処理をcall
+});
 
 </script>
 </div>

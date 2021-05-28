@@ -11,6 +11,7 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+//46 回答配列(仮３つ)
 Array[0]=0
 Array[1]=1
 Array[2]=3
@@ -18,6 +19,7 @@ Array[2]=3
 const db=firebase.firestore();
 const collection = db.collection('messagees');
 
+//46 回答配列を約150個入れる(ループで書きたい。。)
 collection.add({
   message1: Array[0],
   message2: Array[1],
