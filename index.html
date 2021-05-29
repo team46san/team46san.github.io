@@ -46,13 +46,13 @@ var botui = new BotUI('chat-app');
 botui.message.bot({
   loading: true,  
   delay: 2000,  
-  content: talk[0].QUESTION & skip[0].QUESTION 
+  content: talk[0].QUESTION + skip[0][1] 
 //挨拶2
 }).then(function () {
   botui.message.bot({
     loading: true,
     delay: 2500,
-    content: greet1[0].QUESTION & greet2[2].QUESTION
+    content: greet1[0].greet + greet0[0].greet
   })
 //挨拶3
 }).then(function () {
