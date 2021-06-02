@@ -1,193 +1,124 @@
+// 変数
+// 回答リスト
+// var anslist= [0];
+var anslist= new Array(152);
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCU3mxQ5PvMtOsRi1S50ko0UK82kWJe7bo",
-  authDomain: "chatbotapp46.firebaseapp.com",
-  projectId: "chatbotapp46",
-  storageBucket: "chatbotapp46.appspot.com",
-  messagingSenderId: "449707000033",
-  appId: "1:449707000033:web:63f9b202297d507f38f7a0"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
-//46 回答配列(仮３つ)
-Array[0]=0
-Array[1]=1
-Array[2]=3
+// 設問順序
+var orderno=1;
+// 設問ID
+var qid=1;
 
-const db=firebase.firestore();
-const collection = db.collection('messagees');
+// botui
+var botui = new BotUI('chat-app');
 
-//46 回答配列を約150個入れる(ループで書きたい。。)
-collection.add({
-  message1: Array[0],
-  message2: Array[1],
-  message3: Array[2],
-  message4: 'test',
-  message5: 'test',
-  message6: 'test',
-  message7: 'test',
-  message8: 'test',
-  message9: 'test',
-  message10: 'test',
-  message11: 'test',
-  message12: 'test',
-  message13: 'test',
-  message14: 'test',
-  message15: 'test',
-  message16: 'test',
-  message17: 'test',
-  message18: 'test',
-  message19: 'test',
-  message20: 'test',
-  message21: 'test',
-  message22: 'test',
-  message23: 'test',
-  message24: 'test',
-  message25: 'test',
-  message26: 'test',
-  message27: 'test',
-  message28: 'test',
-  message29: 'test',
-  message30: 'test',
-  message31: 'test',
-  message32: 'test',
-  message33: 'test',
-  message34: 'test',
-  message35: 'test',
-  message36: 'test',
-  message37: 'test',
-  message38: 'test',
-  message39: 'test',
-  message40: 'test',
-  message41: 'test',
-  message42: 'test',
-  message43: 'test',
-  message44: 'test',
-  message45: 'test',
-  message46: 'test',
-  message47: 'test',
-  message48: 'test',
-  message49: 'test',
-  message50: 'test',
-  message51: 'test',
-  message52: 'test',
-  message53: 'test',
-  message54: 'test',
-  message55: 'test',
-  message56: 'test',
-  message57: 'test',
-  message58: 'test',
-  message59: 'test',
-  message60: 'test',
-  message61: 'test',
-  message62: 'test',
-  message63: 'test',
-  message64: 'test',
-  message65: 'test',
-  message66: 'test',
-  message67: 'test',
-  message68: 'test',
-  message69: 'test',
-  message70: 'test',
-  message71: 'test',
-  message72: 'test',
-  message73: 'test',
-  message74: 'test',
-  message75: 'test',
-  message76: 'test',
-  message77: 'test',
-  message78: 'test',
-  message79: 'test',
-  message80: 'test',
-  message81: 'test',
-  message82: 'test',
-  message83: 'test',
-  message84: 'test',
-  message85: 'test',
-  message86: 'test',
-  message87: 'test',
-  message88: 'test',
-  message89: 'test',
-  message90: 'test',
-  message91: 'test',
-  message92: 'test',
-  message93: 'test',
-  message94: 'test',
-  message95: 'test',
-  message96: 'test',
-  message97: 'test',
-  message98: 'test',
-  message99: 'test',
-  message100: 'test',
-  message101: 'test',
-  message102: 'test',
-  message103: 'test',
-  message104: 'test',
-  message105: 'test',
-  message106: 'test',
-  message107: 'test',
-  message108: 'test',
-  message109: 'test',
-  message110: 'test',
-  message111: 'test',
-  message112: 'test',
-  message113: 'test',
-  message114: 'test',
-  message115: 'test',
-  message116: 'test',
-  message117: 'test',
-  message118: 'test',
-  message119: 'test',
-  message120: 'test',
-  message121: 'test',
-  message122: 'test',
-  message123: 'test',
-  message124: 'test',
-  message125: 'test',
-  message126: 'test',
-  message127: 'test',
-  message128: 'test',
-  message129: 'test',
-  message130: 'test',
-  message131: 'test',
-  message132: 'test',
-  message133: 'test',
-  message134: 'test',
-  message135: 'test',
-  message136: 'test',
-  message137: 'test',
-  message138: 'test',
-  message139: 'test',
-  message140: 'test',
-  message141: 'test',
-  message142: 'test',
-  message143: 'test',
-  message144: 'test',
-  message145: 'test',
-  message146: 'test',
-  message147: 'test',
-  message148: 'test',
-  message149: 'test',
-  message150: 'test',
-  message151: 'test',
-  message152: 'test',
-  message153: 'test',
-  message154: 'test',
-  message155: 'test',
-  message156: 'test',
-  message157: 'test',
-  message158: 'test',
-  message159: 'test',
-  message160: 'test',
-  message161: 'test',
-  message162: 'test',
-  message163: 'test',
-  message164: 'test',
-  message165: 'test'
-  
-})
-.then(doc => {
-console.log(`${doc.id} added!`)
-})
+//処理　開始挨拶⇒（制御 ⇒ 制御から質問 ⇒ 質問から回答作成 ⇒ 回答作成から制御 ）
+startMessage();
+control(orderno);
+
+//制御
+function control(orderno){
+  if ( orderno >= 5){ //talk.length ) { //とりあえず5問でおためし
+    endMessage();
+  } else {
+    // 質問順序が同じなら、質問出力
+    for (let i = 0; i < talk.length; i++) {
+      if (talk[i].ORDER == orderno) {
+        //回答リストにすでに回答がある場合は、次の設問順序を設定
+        if (anslist[i + 1] >= 1) {
+          orderno = orderno + 1;
+          control(orderno);
+          break;
+        } else {
+          setTalk(i);
+          break;
+        }
+      }
+    }
+  }
+  doend();
+}
+
+//回答リスト作成
+function answerlist(i,val){
+  qid = i + 1;
+  anslist[qid] = val;
+
+  //スキップ処理
+  if(val == 3){
+    for (let index = 1; index < skip.length; index++) {
+      //1.まだ回答していない設問
+      if (! anslist[index] >= 1) {
+        //2.かつ、スキップフラグが1の場合
+        if (skip[i][index] == 1) {
+          anslist[index] = (qid * 100) + 3;
+          console.log(`anslist[index] = ${ anslist[index]}`)
+          console.log(`skip[i][index] = ${ skip[i][index]}, i =  ${ i },index =  ${ index }`)
+        }
+      }
+    }
+  }
+  orderno=orderno + 1;
+  control(orderno);
+}
+
+//開始挨拶
+function startMessage(){
+  botui.message.bot({
+    loading: true,  
+    delay: 2000,  
+    content: greet1[0].greet
+  })
+}
+
+//終了挨拶
+function endMessage(){
+  botui.message.bot({
+    loading: true,  
+    delay: 2000,  
+    content: greet2[0].greet
+  })
+  console.log(`ans = ${ anslist }`)
+
+}
+
+//質問出力
+function setTalk(i){
+
+  botui.message.bot({
+    photo: true,
+    photo: 'https://moin.im/face.svg',
+    loading: true,
+    delay: 1500,  
+    content: talk[i].QUESTION
+  }).then(function () {
+    // return入力待ち状態
+    return botui.action.button({
+      delay: 1500,  //表示タイミング
+      action: [{
+        icon: 'circle-thin',  //FontAwesomeアイコン
+        text: '聞いたことがない                  ',
+        value: 1
+      }, {
+      //  icon: 'close',
+        text: '知っている                        ',
+        value: 2    
+      }, {
+        icon: 'close',
+        text: '一人称でできる                     ',
+        value: 3    
+      }]
+    }).then(function(res) { 
+      //回答をcontrolメソッドにリターン
+      answerlist(i,res.value)
+    })
+  })
+}
+
+function doend(){
+  try {
+    throw new Error('正常終了');
+  } catch (e) {
+    console.log(e.message);
+  }
+}

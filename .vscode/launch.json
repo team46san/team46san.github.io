@@ -1,0 +1,10 @@
+{
+  "configurations": [
+    {
+      "type": "pwa-msedge",
+      "name": "file:///C:/Users/H543180/Documents/git/team46san.github.io/index.html",
+      "request": "launch",
+      "url": "file:///C:/Users/H543180/Documents/git/team46san.github.io/index.html"
+    }
+  ]
+}
