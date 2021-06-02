@@ -1,24 +1,27 @@
 // 変数
 // 回答リスト
 // var anslist= [0];
-var anslist= new Array(152);
+let anslist= new Array(152);
 
-
+// 設問数
+let cnt_order = 10; //talk.length テストとして10問まで。
 // 設問順序
-var orderno=1;
+let orderno = 1;
 // 設問ID
-var qid=1;
+let qid = 1;
 
 // botui
-var botui = new BotUI('chat-app');
+let botui = new BotUI('chat-app');
 
-//処理　開始挨拶⇒（制御 ⇒ 制御から質問 ⇒ 質問から回答作成 ⇒ 回答作成から制御 ）
+// 処理
+// 【概要】　
+// 開始挨拶⇒（制御 ⇒ 制御から質問 ⇒ 質問から回答作成 ⇒ 回答作成から制御 ）⇒終了挨拶
 startMessage();
 control(orderno);
 
 //制御
 function control(orderno){
-  if ( orderno >= 5){ //talk.length ) { //とりあえず5問でおためし
+  if ( orderno >= cnt_order ) {
     endMessage();
   } else {
     // 質問順序が同じなら、質問出力
