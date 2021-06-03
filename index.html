@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="https://unpkg.com/botui/build/botui-theme-default.css">
 <!-- font awsome -->
 <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 
 <script src="data/talk.js"></script><!-- 質問 -->
 <script src="data/skip.js"></script><!-- スキップ -->
@@ -23,22 +24,24 @@
 <script src="data/greet2.js"></script><!-- 挨拶2 -->
 </head>
 
-<body class = "bg-warning">
-<div class="container py-2">
+<body >
+<div class="container py-2 ">
 
 <div id='header-fixed' class="py-6">
-<p class="display-4 text-info text-center  py-4 "><TEST版> ボットくん <i class="fas fa-robot"></i></p>
+<p class="display-4 text-info text-center  py-4"><TEST版> ボットくん <i class="fas fa-robot"></i></p>
 </div>
 
-
+<div class="bg-secondary">
 <!-- チャット表示  -->
-<div class="botui-app-container Primary Alert border border-info " id="chat-app">
-<bot-ui style="white-space:pre-wrap;"></bot-ui>
+<div class="botui-app-container Primary Alert border border-info" id="chat-app">
+<bot-ui style="white-space:pre-wrap; font-size: 19px;"class = "bg-warning"></bot-ui>
 <script src="js/main.js"></script>
 </div>
 
-
-
+</div>
+<footer class="text-center text-muted " style="padding-top: 14rem">
+  Copyright XXX
+</footer>
 
 <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
